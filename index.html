@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <title>Frontend Mentor | Mood tracking app</title>
+</head>
+<body>
+
+<main class="mood-tracker">
+
+  <header class="header">
+
+    <a href="/" aria-label="Página de Mood Tracker" class="header__logo">
+        <img src="assets/images/logo.svg" alt="Logo Mood Tracker">
+    </a> <!--.header__logo-->
+
+    <div class="header__profile">
+      <img src="assets/images/avatar-lisa.jpg" alt="Avatar" class="header__avatar">
+      <button type="button"  class="header__arrow">
+        <img src="assets/images/icon-dropdown-arrow.svg"> 
+      </button>
+    </div> <!--.header__profile-->
+
+  </header> <!--.header-->
+
+  <div class="salute">
+
+    <h2>Hello, <span id="salute-name">Lisa</span>!</h2>
+    <h1>How are you feeling today?</h1>
+    <p id="today"></p>
+
+    <button class="salute__button" id="btnLog">Log today's mood</button>
+
+  </div> <!--.salute-->
+
+  <div class="today-dashboard">
+
+    <div class="today-dashboard__feeling">
+
+      <div class="feeling__text">
+        <p>I'm feeling <br><span id="today-feeling">Very Sad</span></p> 
+      </div> <!--.feeling__text-->
+
+      <img src="assets/images/icon-very-sad-color.svg" class="feeling__image" >
+
+      <div class="feeling__quote">
+        <img src="assets/images/icon-quote.svg">
+        <p id="feeling-quote">"You are stronger than you think; the storm will pass."</p> <!--random-->
+      </div>
+
+    </div> <!--.today-dashboard__feeling-->
+
+    <div class="today-dashboard__sleep">
+
+      <div class="sleep__header">
+        <img src="assets/images/icon-sleep.svg">
+        <p>Sleep</p>
+      </div>
+
+      <p class="sleep__hours"> <span id="sleep-time">9+</span> hours</p>
+
+    </div> <!--.today-dashboard__sleep-->
+
+    <div class="today-dashboard__reflection">
+
+      <div class="reflection__header">
+        <img src="assets/images/icon-reflection.svg">
+        <p>Reflection of the day</p>
+      </div>
+
+      <p class="reflection__text">Woke up early and finally tackled a big project!</p>
+
+      <div class="reflection__hashtag">
+        <p class="reflection__hashtag--item">#Grateful</p>
+        <p class="reflection__hashtag--item">#Optimistic</p>
+      </div>
+
+
+    </div> <!--.today-dashboard__reflection-->
+
+  </div> <!--.today-dashboard-->
+
+
+  <div class="dashboard">
+
+    <div class="dashboard__average">
+
+      <h3 class="average__title">Average Mood <span>(Last 5 check-ins)</span> </h3>
+      <div class="average__box average__box--mood">
+
+        <div class="average__subtitle average__subtitle--mood">
+          <img src="assets/images/icon-neutral-white.svg" id="average-mood-icon" alt="">
+          <p id="average-mood">Neutral</p>
+        </div>
+
+        <div class="average__text average__text--mood">
+          <img src="assets/images/icon-trend-same.svg" alt="">
+          <p>Same as the previous 5 check-ins</p>
+        </div>
+
+      </div> <!--.average__mood-->
+
+      <h3 class="average__title">Average Sleep <span>(Last 5 check-ins)</span> </h3>
+      <div class="average__box average__box--sleep">
+
+        <div class="average__subtitle average__subtitle--sleep">
+          <img src="assets/images/icon-sleep.svg" alt="">
+          <p id="average-sleep">5-6 Hours</p>
+        </div>
+
+          <div class="average__text average__text--sleep">
+          <img src="assets/images/icon-trend-increase.svg" alt="">
+          <p>Increase from the previous 5 check-ins</p>
+        </div>
+
+      </div> <!--.average__sleep-->
+
+    </div> <!--.dashboard__average-->
+
+    <div class="dashboard__trends">
+
+      <div class="trends__header">
+        <h2>Mood and sleep trends</h2>
+        <button id="toggle-data-btn" type="button">Toggle Empty / Populated</button>
+      </div>
+
+      <div class="chart__container">
+
+        <!-- Eje Y (Horas de sueño) -->
+        <div class="chart__y-axis">
+          <span><img src="assets/images/icon-sleep.svg" alt=""> 9+ hours</span>
+          <span><img src="assets/images/icon-sleep.svg" alt=""> 7-8 hours</span>
+          <span><img src="assets/images/icon-sleep.svg" alt=""> 5-6 hours</span>
+          <span><img src="assets/images/icon-sleep.svg" alt=""> 3-4 hours</span>
+          <span><img src="assets/images/icon-sleep.svg" alt=""> 0-2 hours</span>
+        </div>
+
+        <!-- Área del gráfico -->
+        <div class="chart__body">
+          <!-- Líneas de guía de fondo -->
+          <div class="chart__grid-lines">
+            <div class="grid-line"></div>
+            <div class="grid-line"></div>
+            <div class="grid-line"></div>
+            <div class="grid-line"></div>
+            <div class="grid-line"></div>
+          </div>
+
+          <!-- Columnas dinámicas -->
+          <div class="chart__columns" id="chart-columns"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div> <!--.dashboard-->
+
+</main>
+
+
+  <!--
+
+
+  Log your mood
+
+  How was your mood today?
+  Very Happy
+  Happy
+  Neutral
+  Sad
+  Very Sad
+
+  Continue
+
+  Log your mood
+
+  How did you feel?
+  Select up to three tags:
+  Joyful
+  Down
+  Anxious
+  Calm
+  Excited
+  Frustrated
+  Lonely
+  Grateful
+  Overwhelmed
+  Motivated
+  Irritable
+  Peaceful
+  Tired
+  Hopeful
+  Confident
+  Stressed
+  Content
+  Disappointed
+  Optimistic
+  Restless
+
+  Continue
+
+  Log your mood
+
+  Write about your day...
+
+  Continue
+
+  How many hours did you sleep last night?
+  9+ hours
+  7-8 hours
+  5-6 hours
+  3-4 hours
+  0-2 hours
+
+  Submit -->
+
+  <script src="js/main.js"></script>
+</body>
+</html>

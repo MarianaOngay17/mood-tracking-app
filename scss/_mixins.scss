@@ -1,0 +1,63 @@
+@use 'variables' as v;
+@use 'sass:color';
+
+@mixin lessThanMobile {
+    @media (max-width: 300px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (min-width: v.$mobile) {
+        @content;
+    }
+}
+
+@mixin betweenMobileTablet {
+    @media (min-width: 450px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+@mixin mainButton{
+    appearance: none;
+    -moz-appearance: none;
+    
+    font-family: v.$fuente_principal;
+    background-color: v.$Blue600;
+    color: v.$White;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+
+    cursor: pointer;
+
+    &:hover{
+        background-color: v.$Blue700;
+    }
+
+    &:focus{
+        outline: 2px solid v.$Blue700;
+        outline-offset: 4px;
+    }
+
+    &:disabled { //PROPIEDAD
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none; 
+    }
+
+}

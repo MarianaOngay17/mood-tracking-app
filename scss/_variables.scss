@@ -1,0 +1,39 @@
+//Tamaño Media Queries 
+$mobile: 360px;
+$tablet: 768px;
+$desktop: 1200px;
+
+//Fuentes
+$fuente_principal: "Reddit Sans", sans-serif;
+
+//Colores
+$White: hsl(0, 0%, 100%);
+$Black: hsl(0, 0%, 0%);
+
+$Neutral900: rgb(33, 33, 77);
+$Neutral600: rgb(87, 87, 123);
+$Neutral300: rgb(147, 147, 183);
+$Neutral200: rgb(203, 205, 208);
+
+$Blue700: rgb(42, 76, 213);
+$Blue600: rgb(72, 101, 219);
+$Blue200: rgb(199, 211, 247);
+$Blue100: rgb(224, 230, 250);
+
+$Red700: rgb(230, 0, 19);
+$Red300: rgb(255, 155, 153);
+
+$Indigo200: rgb(184, 177, 255);
+$Blue300: rgb(137, 202, 255);
+$Green300: rgb(137, 231, 128);
+$Amber300: rgb(255, 201, 124);
+
+$glow-color: rgba(198, 212, 249, 0.6);
+
+
+//Tamaños fuente
+$light: 300;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
