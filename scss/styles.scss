@@ -2,11 +2,32 @@
 @use 'mixins' as m;
 @use 'sass:color';
 
+//////GLOBAL
+
 body{
     font-family: v.$fuente_principal;
     min-height: 100vh;
     margin: 0;
     background: linear-gradient(180deg, #F5F5FF 72.99%, v.$Neutral300 110%);
+
+    position: relative;
+}
+
+.hidden{
+    display: none !important;
+}
+
+
+.mood-tracker.is-active::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color:rgba(16, 19, 67, 0.6);
+    backdrop-filter: blur(2px); 
+    z-index: 990; 
 }
 
 /////////MOOD-TRACKER
@@ -33,6 +54,77 @@ body{
         display: flex;
         align-items: center;
         gap: 1rem;
+
+        position: relative;
+        
+        &:focus-within {/* Cuando el botón interno (o cualquier hijo) recibe el foco */
+            outline: 2px solid v.$Blue700; 
+            outline-offset: 2px;
+        }
+
+        &--dropdown{
+            position: absolute;
+            top: 3rem;
+            right: 0;
+            background-color: v.$White;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            padding: 1rem;
+            border-radius: 12px;
+
+            width: 18rem;
+
+            @include m.lessThanMobile{
+                width: auto;
+            }
+
+            @include m.tablet{
+                width: 12rem;
+            }
+        }
+    }
+
+    &__user-info{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid v.$glow-color;
+        p{
+            margin: 0;
+        }
+        &--name{
+            font-size: 1.1rem;
+        }
+        &--mail{
+            font-size: 0.9rem;
+            color: v.$Neutral300;
+        }
+    }
+
+    &__options{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    &__option{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        appearance: none;
+        -moz-appearance: none;
+        font-family: v.$fuente_principal;
+        background-color: transparent;
+        border: none;
+        font-size: 1rem;
+
+        cursor: pointer;
+
     }
 
     &__avatar{
@@ -47,7 +139,151 @@ body{
         background-color: transparent;
         border: none;
         cursor: pointer;
+
+        &:focus,
+        &:focus-visible {
+            outline: none;
+        }
+      
     }
+}
+
+////////PROFILE-UPDATE
+
+.profile-update{
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    background-color: v.$White;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    width: 18rem;
+
+    position: fixed;
+    top: 2rem;         
+    left: 50%;
+    transform: translateX(-50%); // Solo centra horizontalmente
+    z-index: 1000;
+
+    @include m.betweenMobileTablet{
+        width: 28rem;
+    }
+   
+
+    &__close{
+        align-self: flex-end;
+        appearance: none;
+        -moz-appearance: none;
+        font-family: v.$fuente_principal;
+        background-color: transparent;
+        border: none;
+        font-weight: v.$bold;
+        color: v.$Neutral300;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    &__header{
+        h2{
+            font-size: 1.8rem;
+            margin: 0;
+            color: v.$Neutral900;
+        }
+        p{
+            color: v.$Neutral600;
+            font-size: 1rem;
+        }
+    }
+
+    &__name{
+        width: 100%;
+        p{
+            color: v.$Neutral900;
+            margin: 0 0 0.5rem 0;
+        }
+        input{
+            border-radius: 8px;
+            border: 1px solid v.$Neutral900;
+            height: 2rem;
+            width: 100%;
+            font-size: 1rem;
+            padding-left: 0.5rem;
+
+            &:focus{
+                outline-offset: 2px;
+                outline: 2px solid v.$Blue700;
+                border-color: v.$Neutral300;
+            }
+        }
+    }
+
+    &__photo{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 1rem;
+
+        margin: 1rem 0;
+    }
+
+    &__img{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+    }
+
+    &__upload{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        p{
+            margin: 0;
+        }        
+    }
+    
+    &__upload-text{
+        color: v.$Neutral900;
+        &--description{
+            color: v.$Neutral600;
+            font-size: 0.85rem;
+        }
+    }
+
+    &__uploadBtn{
+        appearance: none;
+        -moz-appearance: none;
+        font-family: v.$fuente_principal;
+        background-color: transparent;
+        border: 1px solid v.$Neutral300;
+        border-radius: 10px;
+        width: 5rem;
+        height: 2rem;
+        font-size: 1rem;
+        margin-top: 1rem;
+
+        cursor: pointer;
+
+        &:hover{
+            border: 1px solid v.$Neutral900;
+        }
+
+        &:focus{
+            outline: 2px solid v.$Blue700;
+            outline-offset: 2px;
+        }
+        
+    }
+
+    &__saveBtn{
+        @include m.mainButton;
+        width: 100%;
+    }
+
 }
 
 ////////SALUTE
@@ -616,9 +852,5 @@ body{
 .chart__column .chart__bar {
   margin-top: auto;
   margin-bottom: 0;
-}
-
-.hidden{
-    display: none;
 }
 

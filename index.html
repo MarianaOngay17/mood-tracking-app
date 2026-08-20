@@ -26,6 +26,22 @@
       <button type="button"  class="header__arrow">
         <img src="assets/images/icon-dropdown-arrow.svg"> 
       </button>
+      <div class="header__profile--dropdown hidden">
+        <div class="header__user-info">
+          <p id="user-name" class="header__user-info--name">Lisa Maria</p>
+          <p id="user-mail" class="header__user-info--mail">lisa@mail.com</p>
+        </div>
+        <div class="header__options">
+            <button  class="header__option header__option--settings">
+              <img src="assets/images/icon-settings.svg" alt="">
+              Settings
+            </button>
+            <button  class="header__option header__option--logout">
+              <img src="assets/images/icon-logout.svg" alt="">
+              Logout
+            </button>
+        </div>
+      </div> <!--.header__profile--dropdown-->
     </div> <!--.header__profile-->
 
   </header> <!--.header-->
@@ -162,7 +178,35 @@
 
   </div> <!--.dashboard-->
 
-</main>
+</main> <!--.mood.tracker-->
+
+
+<div class="profile-update hidden">
+  <button type="button" class="profile-update__close">X</button>
+
+  <div class="profile-update__header">
+    <h2>Update your profile</h2>
+    <p>Personalize your account with your name and photo</p>
+  </div>
+
+  <div class="profile-update__name">
+    <p>Name</p>
+    <input type="text" id="update-name">
+  </div>
+
+  <div class="profile-update__photo">
+    <img src="assets/images/avatar-lisa.jpg" class="profile-update__img">
+    <div class="profile-update__upload">
+      <p class="profile-update__upload-text">Upload Image</p>
+      <p class="profile-update__upload-text--description">Max 250KB, PNG or JPEG</p>
+      <button type="button" class="profile-update__uploadBtn">Upload</button>
+    </div>
+  </div>
+
+  <button type="button" class="profile-update__saveBtn">Save changes</button>
+</div>
+
+
 
 
   <!--
@@ -222,5 +266,6 @@
   Submit -->
 
   <script src="js/main.js"></script>
+  <script src="js/keyMovility.js"></script>
 </body>
 </html>

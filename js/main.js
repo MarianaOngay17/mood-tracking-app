@@ -1,6 +1,39 @@
 document.addEventListener('DOMContentLoaded', async function(){
+    var moodTracker = document.querySelector('.mood-tracker');
     //mostrar fecha actual
     document.getElementById('today').textContent = formatearFecha(new Date());
+
+    //boton perfil
+    var arrowBtn = document.querySelector('.header__arrow');
+    var dropdown = document.querySelector('.header__profile--dropdown');
+    arrowBtn.addEventListener('click', function(){
+      dropdown.classList.toggle('hidden');
+    });
+
+
+    //settings
+    var settingsBtn = document.querySelector('.header__option--settings')
+    var closeUpdateProfile = document.querySelector('.profile-update__close');
+    var profileUpdate = document.querySelector('.profile-update');
+
+    settingsBtn.addEventListener('click', function(){
+      var userName = document.getElementById('user-name');
+      var userNameUpdate = document.getElementById('update-name');
+
+      userNameUpdate.value = userName.textContent;
+
+      profileUpdate.classList.toggle('hidden');
+      moodTracker.classList.add('is-active');
+      dropdown.classList.toggle('hidden');
+    });
+
+    closeUpdateProfile.addEventListener('click', function(){
+      profileUpdate.classList.toggle('hidden');
+      moodTracker.classList.remove('is-active');
+    });
+
+
+
 
 
     // Toggle entre con y sin datos

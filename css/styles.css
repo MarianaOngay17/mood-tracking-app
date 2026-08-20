@@ -1,8 +1,26 @@
+@charset "UTF-8";
 body {
   font-family: "Reddit Sans", sans-serif;
   min-height: 100vh;
   margin: 0;
   background: linear-gradient(180deg, #F5F5FF 72.99%, rgb(147, 147, 183) 110%);
+  position: relative;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.mood-tracker.is-active::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(16, 19, 67, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 990;
 }
 
 .mood-tracker {
@@ -28,6 +46,68 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
+}
+.header__profile:focus-within { /* Cuando el botón interno (o cualquier hijo) recibe el foco */
+  outline: 2px solid rgb(42, 76, 213);
+  outline-offset: 2px;
+}
+.header__profile--dropdown {
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
+  border-radius: 12px;
+  width: 18rem;
+}
+@media (max-width: 300px) {
+  .header__profile--dropdown {
+    width: auto;
+  }
+}
+@media (min-width: 768px) {
+  .header__profile--dropdown {
+    width: 12rem;
+  }
+}
+.header__user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(198, 212, 249, 0.6);
+}
+.header__user-info p {
+  margin: 0;
+}
+.header__user-info--name {
+  font-size: 1.1rem;
+}
+.header__user-info--mail {
+  font-size: 0.9rem;
+  color: rgb(147, 147, 183);
+}
+.header__options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.header__option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  appearance: none;
+  -moz-appearance: none;
+  font-family: "Reddit Sans", sans-serif;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
 }
 .header__avatar {
   width: 2.5rem;
@@ -40,6 +120,146 @@ body {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+.header__arrow:focus, .header__arrow:focus-visible {
+  outline: none;
+}
+
+.profile-update {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background-color: hsl(0, 0%, 100%);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  width: 18rem;
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+@media (min-width: 450px) {
+  .profile-update {
+    width: 28rem;
+  }
+}
+.profile-update__close {
+  align-self: flex-end;
+  appearance: none;
+  -moz-appearance: none;
+  font-family: "Reddit Sans", sans-serif;
+  background-color: transparent;
+  border: none;
+  font-weight: 700;
+  color: rgb(147, 147, 183);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.profile-update__header h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: rgb(33, 33, 77);
+}
+.profile-update__header p {
+  color: rgb(87, 87, 123);
+  font-size: 1rem;
+}
+.profile-update__name {
+  width: 100%;
+}
+.profile-update__name p {
+  color: rgb(33, 33, 77);
+  margin: 0 0 0.5rem 0;
+}
+.profile-update__name input {
+  border-radius: 8px;
+  border: 1px solid rgb(33, 33, 77);
+  height: 2rem;
+  width: 100%;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+}
+.profile-update__name input:focus {
+  outline-offset: 2px;
+  outline: 2px solid rgb(42, 76, 213);
+  border-color: rgb(147, 147, 183);
+}
+.profile-update__photo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.profile-update__img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.profile-update__upload {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.profile-update__upload p {
+  margin: 0;
+}
+.profile-update__upload-text {
+  color: rgb(33, 33, 77);
+}
+.profile-update__upload-text--description {
+  color: rgb(87, 87, 123);
+  font-size: 0.85rem;
+}
+.profile-update__uploadBtn {
+  appearance: none;
+  -moz-appearance: none;
+  font-family: "Reddit Sans", sans-serif;
+  background-color: transparent;
+  border: 1px solid rgb(147, 147, 183);
+  border-radius: 10px;
+  width: 5rem;
+  height: 2rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.profile-update__uploadBtn:hover {
+  border: 1px solid rgb(33, 33, 77);
+}
+.profile-update__uploadBtn:focus {
+  outline: 2px solid rgb(42, 76, 213);
+  outline-offset: 2px;
+}
+.profile-update__saveBtn {
+  appearance: none;
+  -moz-appearance: none;
+  font-family: "Reddit Sans", sans-serif;
+  background-color: rgb(72, 101, 219);
+  color: hsl(0, 0%, 100%);
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+}
+.profile-update__saveBtn:hover {
+  background-color: rgb(42, 76, 213);
+}
+.profile-update__saveBtn:focus {
+  outline: 2px solid rgb(42, 76, 213);
+  outline-offset: 4px;
+}
+.profile-update__saveBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.profile-update__saveBtn {
+  width: 100%;
 }
 
 .salute {
@@ -555,10 +775,6 @@ body {
 .chart__column .chart__bar {
   margin-top: auto;
   margin-bottom: 0;
-}
-
-.hidden {
-  display: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
