@@ -181,6 +181,7 @@
 </main> <!--.mood.tracker-->
 
 
+<!--UPDATE PROFILE-->
 <div class="profile-update hidden">
   <button type="button" class="profile-update__close">X</button>
 
@@ -204,14 +205,268 @@
   </div>
 
   <button type="button" class="profile-update__saveBtn">Save changes</button>
-</div>
+</div> <!--.profile-update -->
+
+
+<!--LOG MOOD-->
+<div class="log-mood hidden">
+   <button type="button" class="log-mood__close">X</button>
+
+   <div class="log-mood__header">
+    <h2>Log your mood</h2>
+
+    <div class="log-mood__progress">
+      <div class="log-mood__bar log-mood__bar--step1 log-mood__bar--active"> </div>
+      <div class="log-mood__bar log-mood__bar--step2"></div>
+      <div class="log-mood__bar log-mood__bar--step3"></div>
+      <div class="log-mood__bar log-mood__bar--step4"></div>
+    </div>
+  </div> <!--.log-mood__header-->
+
+  <div class="step1 hidden">
+
+    <h3>How was your mood today?</h3>
+
+    <div class="step1__options">
+
+      <div class="step1__option">
+        <label for="step1-very-happy" class="step1__label">
+          <input type="radio" id="step1-very-happy" name="step1Option" value="very-happy"> 
+          <span>Very Happy</span>
+          <img src="assets/images/icon-very-happy-color.svg" alt="">
+        </label>
+      </div>
+
+
+      <div class="step1__option">
+        <label for="step1-happy" class="step1__label">
+          <input type="radio" id="step1-happy" name="step1Option" value="happy"> 
+          <span>Happy</span>
+          <img src="assets/images/icon-happy-color.svg" alt="">
+        </label>
+      </div>
+
+      <div class="step1__option">
+        <label for="step1-neutral" class="step1__label">
+          <input type="radio" id="step1-neutral" name="step1Option" value="neutral"> 
+          <span>Neutral</span>
+          <img src="assets/images/icon-neutral-color.svg" alt="">
+        </label>
+      </div>
+
+      <div class="step1__option">
+        <label for="step1-sad" class="step1__label">
+          <input type="radio" id="step1-sad" name="step1Option" value="sad"> 
+          <span>Sad</span>
+          <img src="assets/images/icon-sad-color.svg" alt="">
+        </label>
+      </div>
+
+
+      <div class="step1__option">
+        <label for="step1-very-sad" class="step1__label">
+          <input type="radio" id="step1-very-sad" name="step1Option" value="very-sad"> 
+          <span>Sad</span>
+          <img src="assets/images/icon-very-sad-color.svg" alt="">
+        </label>
+      </div>
+
+    </div> <!--.step1__options-->
+
+    <button class="step1__continueBtn">Continue</button>
+  </div> <!--.step1-->
+
+  <div class="step2 hidden">
+    <h3>How did you feel?</h3>
+    <p>Select up to three tags:</p>
+
+    <div class="step2__options">
+
+      <div class="step2_option">
+         <label for="step2-joyful" class="step2__label">
+          <input type="checkbox" id="step2-joyful" name="step2Option" value="joyful"> 
+          <span>Joyful</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-down" class="step2__label">
+          <input type="checkbox" id="step2-down" name="step2Option" value="down"> 
+          <span>Down</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-anxious" class="step2__label">
+          <input type="checkbox" id="step2-anxious" name="step2Option" value="anxious"> 
+          <span>Anxious</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-calm" class="step2__label">
+          <input type="checkbox" id="step2-calm" name="step2Option" value="calm"> 
+          <span>Calm</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-excited" class="step2__label">
+          <input type="checkbox" id="step2-excited" name="step2Option" value="excited"> 
+          <span>Excited</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-frustrated" class="step2__label">
+          <input type="checkbox" id="step2-frustrated" name="step2Option" value="frustrated"> 
+          <span>Frustrated</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-lonely" class="step2__label">
+          <input type="checkbox" id="step2-lonely" name="step2Option" value="lonely"> 
+          <span>Lonely</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-grateful" class="step2__label">
+          <input type="checkbox" id="step2-grateful" name="step2Option" value="grateful"> 
+          <span>Grateful</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-overwhelmed" class="step2__label">
+          <input type="checkbox" id="step2-overwhelmed" name="step2Option" value="overwhelmed"> 
+          <span>Overwhelmed</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-motivated" class="step2__label">
+          <input type="checkbox" id="step2-motivated" name="step2Option" value="motivated"> 
+          <span>Motivated</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-irritable" class="step2__label">
+          <input type="checkbox" id="step2-irritable" name="step2Option" value="irritable"> 
+          <span>Irritable</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-peaceful" class="step2__label">
+          <input type="checkbox" id="step2-peaceful" name="step2Option" value="peaceful"> 
+          <span>Peaceful</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-tired" class="step2__label">
+          <input type="checkbox" id="step2-tired" name="step2Option" value="tired"> 
+          <span>Tired</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-hopeful" class="step2__label">
+          <input type="checkbox" id="step2-hopeful" name="step2Option" value="hopeful"> 
+          <span>Hopeful</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-confident" class="step2__label">
+          <input type="checkbox" id="step2-confident" name="step2Option" value="confident"> 
+          <span>Confident</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-stressed" class="step2__label">
+          <input type="checkbox" id="step2-stressed" name="step2Option" value="stressed"> 
+          <span>Stressed</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-content" class="step2__label">
+          <input type="checkbox" id="step2-content" name="step2Option" value="content"> 
+          <span>Content</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-disappointed" class="step2__label">
+          <input type="checkbox" id="step2-disappointed" name="step2Option" value="disappointed"> 
+          <span>Disappointed</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-optimistic" class="step2__label">
+          <input type="checkbox" id="step2-optimistic" name="step2Option" value="optimistic"> 
+          <span>Optimistic</span>
+        </label>
+      </div>
+      <div class="step2_option">
+         <label for="step2-restless" class="step2__label">
+          <input type="checkbox" id="step2-restless" name="step2Option" value="restless"> 
+          <span>Restless</span>
+        </label>
+      </div>
+
+    </div> <!--.step2__options-->
+
+    <button class="step2__continueBtn">Continue</button>
+
+  </div> <!--.step2-->
+
+  <div class="step3 hidden">
+    <h3>Write about your day...</h3>
+
+    <div class="step3__textarea-container">
+      <textarea id="mood-note" maxlength="150" placeholder="Today, I felt..."></textarea>
+      <span class="step3__counter" id="char-counter">0/150</span>
+    </div>
+
+    <button class="step3__continueBtn">Continue</button>
+  </div> <!--.step3-->
+
+  <div class="step4  hidden">
+
+    <h3>How many hours did you sleep last night?</h3>
+
+    <div class="step4__options">
+
+      <div class="step4__option">
+        <label for="step4-9hours" class="step4__label">
+          <input type="radio" id="step4-9hours" name="step4Option" value="9hours"> 
+          <span>9+ hours</span>
+        </label>
+      </div>
+
+      <div class="step4__option">
+        <label for="step4-7hours" class="step4__label">
+          <input type="radio" id="step4-7hours" name="step4Option" value="7hours"> 
+          <span>7-8 hours</span>
+        </label>
+      </div>
+      
+      <div class="step4__option">
+        <label for="step4-3hours" class="step4__label">
+          <input type="radio" id="step4-3hours" name="step4Option" value="3hours"> 
+          <span>3-4 hours</span>
+        </label>
+      </div>
+
+      <div class="step4__option">
+        <label for="step4-0hours" class="step4__label">
+          <input type="radio" id="step4-0hours" name="step4Option" value="0hours"> 
+          <span>0-2 hours</span>
+        </label>
+      </div>
+
+    </div> <!--.step4__options-->
+
+    <button class="step4__submitBtn" type="submit">Submit</button>
+  
+  </div> <!--.step4-->
 
 
 
+</div> <!--.log-mood-->
 
-  <!--
 
 
+<!--
   Log your mood
 
   How was your mood today?

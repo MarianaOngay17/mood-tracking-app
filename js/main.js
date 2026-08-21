@@ -1,40 +1,5 @@
 document.addEventListener('DOMContentLoaded', async function(){
-    var moodTracker = document.querySelector('.mood-tracker');
-    //mostrar fecha actual
-    document.getElementById('today').textContent = formatearFecha(new Date());
-
-    //boton perfil
-    var arrowBtn = document.querySelector('.header__arrow');
-    var dropdown = document.querySelector('.header__profile--dropdown');
-    arrowBtn.addEventListener('click', function(){
-      dropdown.classList.toggle('hidden');
-    });
-
-
-    //settings
-    var settingsBtn = document.querySelector('.header__option--settings')
-    var closeUpdateProfile = document.querySelector('.profile-update__close');
-    var profileUpdate = document.querySelector('.profile-update');
-
-    settingsBtn.addEventListener('click', function(){
-      var userName = document.getElementById('user-name');
-      var userNameUpdate = document.getElementById('update-name');
-
-      userNameUpdate.value = userName.textContent;
-
-      profileUpdate.classList.toggle('hidden');
-      moodTracker.classList.add('is-active');
-      dropdown.classList.toggle('hidden');
-    });
-
-    closeUpdateProfile.addEventListener('click', function(){
-      profileUpdate.classList.toggle('hidden');
-      moodTracker.classList.remove('is-active');
-    });
-
-
-
-
+  listeners();
 
     // Toggle entre con y sin datos
   document.getElementById('toggle-data-btn').addEventListener('click', () => {
@@ -85,7 +50,153 @@ document.addEventListener('DOMContentLoaded', async function(){
 
   let isEmptyState = false;
 
- function renderChart(data) {
+function listeners(){
+
+   var moodTracker = document.querySelector('.mood-tracker');
+
+    //mostrar fecha actual
+    document.getElementById('today').textContent = formatearFecha(new Date());
+
+    //boton arrow perfil
+    var arrowBtn = document.querySelector('.header__arrow');
+    var dropdown = document.querySelector('.header__profile--dropdown');
+    arrowBtn.addEventListener('click', function(){
+      dropdown.classList.toggle('hidden');
+    });
+
+
+    //settings profile
+    var settingsBtn = document.querySelector('.header__option--settings')
+    var closeUpdateProfile = document.querySelector('.profile-update__close');
+    var profileUpdate = document.querySelector('.profile-update');
+
+    settingsBtn.addEventListener('click', function(){
+      var userName = document.getElementById('user-name');
+      var userNameUpdate = document.getElementById('update-name');
+
+      userNameUpdate.value = userName.textContent;
+
+      profileUpdate.classList.toggle('hidden');
+      moodTracker.classList.add('is-active');
+      dropdown.classList.toggle('hidden');
+    });
+
+    closeUpdateProfile.addEventListener('click', function(){
+      profileUpdate.classList.toggle('hidden');
+      moodTracker.classList.remove('is-active');
+    });
+
+
+    //log todays mood
+    var logMoodBtn = document.getElementById('btnLog');
+    var logMood = document.querySelector('.log-mood');
+    var logMoodCloseBtn = document.querySelector('.log-mood__close');
+
+    var step1 = document.querySelector('.step1');
+    var step2 = document.querySelector('.step2');
+    var step3 = document.querySelector('.step3');
+    var step4 = document.querySelector('.step4');
+
+    var step1Btn = document.querySelector('.step1__continueBtn');
+    var step2Btn = document.querySelector('.step2__continueBtn');
+    var step3Btn = document.querySelector('.step3__continueBtn');
+    var step4Btn = document.querySelector('.step4__submitBtn');
+
+    var logMoodBar = document.querySelectorAll('.log-mood__bar')
+
+    logMoodBtn.addEventListener('click', function(){
+      moodTracker.classList.add('is-active');
+      logMood.classList.toggle('hidden');
+      step1.classList.remove('hidden');
+      
+      logMoodBar[0].classList.add('log-mood__bar--active');
+
+    });
+
+    logMoodCloseBtn.addEventListener('click', function(){
+       moodTracker.classList.remove('is-active');
+       logMood.classList.toggle('hidden');
+
+       step1.classList.add('hidden');
+       step2.classList.add('hidden');
+       step3.classList.add('hidden');
+       step4.classList.add('hidden');
+
+       logMoodBar.forEach(bar => {
+        bar.classList.remove('log-mood__bar--active');
+       });
+    });
+
+    step1Btn.addEventListener('click', function(){
+
+        //agregar validacion
+
+        step1.classList.add('hidden');
+        step2.classList.remove('hidden');
+
+        logMoodBar[1].classList.add('log-mood__bar--active');
+
+    });
+
+    step2Btn.addEventListener('click', function(){
+
+        //agregar validacion
+
+        step2.classList.add('hidden');
+        step3.classList.remove('hidden');
+
+        logMoodBar[2].classList.add('log-mood__bar--active');
+    });
+
+    step3Btn.addEventListener('click', function(){
+
+        //agregar validacion
+
+        step3.classList.add('hidden');
+        step4.classList.remove('hidden');
+
+        logMoodBar[3].classList.add('log-mood__bar--active');
+    });
+
+    step3Btn.addEventListener('click', function(){
+
+        //agregar validacion
+
+        step3.classList.add('hidden');
+        step4.classList.remove('hidden');
+    });
+
+    step4Btn.addEventListener('click', function(){
+
+        //agregar validacion
+
+        step4.classList.add('hidden');
+        moodTracker.classList.remove('is-active');
+        logMood.classList.toggle('hidden');
+
+        logMoodBar.forEach(bar => {
+          bar.classList.remove('log-mood__bar--active');
+        });
+
+    });
+
+
+
+    //step 3 - mood note - how was your day
+    const textarea = document.getElementById('mood-note');
+    const counter = document.getElementById('char-counter');
+    const MAX_CHARS = 150;
+
+    textarea.addEventListener('input', () => {
+        const currentLength = textarea.value.length;
+        counter.textContent = `${currentLength}/${MAX_CHARS}`;
+        counter.classList.toggle('step3__counter--limit', currentLength >= MAX_CHARS);
+    });
+
+}
+
+
+function renderChart(data) {
   const container = document.getElementById('chart-columns');
   container.innerHTML = '';
 

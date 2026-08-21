@@ -176,16 +176,7 @@ body{
    
 
     &__close{
-        align-self: flex-end;
-        appearance: none;
-        -moz-appearance: none;
-        font-family: v.$fuente_principal;
-        background-color: transparent;
-        border: none;
-        font-weight: v.$bold;
-        color: v.$Neutral300;
-        font-size: 1.2rem;
-        cursor: pointer;
+        @include m.closeButton;
     }
 
     &__header{
@@ -412,6 +403,284 @@ body{
     }
 
 }
+
+
+//////////LOD-MOOD
+.log-mood{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    background-color: v.$Neutral200A;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    width: 18rem;
+
+    position: fixed;
+    top: 2rem;         
+    left: 50%;
+    transform: translateX(-50%); // Solo centra horizontalmente
+    z-index: 1000;
+
+    @include m.betweenMobileTablet{
+        width: 28rem;
+    }
+    @include m.tablet{
+        width: 33rem;
+    }
+
+    &__close{
+        @include m.closeButton;
+    }
+
+    &__header{
+        width: 100%;
+        h2{
+            font-size: 1.8rem;
+            margin: 0;
+            color: v.$Neutral900;
+        }
+    }
+
+    &__progress{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem 0;
+        width: 100%;
+    }
+   
+    &__bar{
+        content: "";
+        width: 7rem;
+        border-top: 5px solid v.$Blue200;
+        border-radius: 20px;
+
+        &--active{
+            border-color: v.$Blue700
+        }
+
+    }
+}
+
+.step1, 
+.step2,
+.step3,
+.step4{
+    h3{
+        font-size: 1.4rem;
+        margin: 0;
+        color: v.$Neutral900;
+    }
+
+
+    &__continueBtn,
+    &__submitBtn
+    {
+        @include m.mainButton;
+        margin-top: 1.5rem;
+        width: 100%;
+    }
+}
+
+.step1,
+.step4{
+     width: 100%;
+
+    &__options{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+        
+        margin-top: 0.5rem;
+    }
+
+    &__option{
+        width: 100%;         
+    }
+
+    &__label{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.75rem;
+
+        background-color: v.$White;
+        border: 2px solid v.$Blue200;
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        width: 100%;
+        box-sizing: border-box;
+        cursor: pointer; 
+        transition: border-color 0.2s ease;
+
+        &:has(input:checked) {
+            border-color: v.$Blue700;
+        }
+
+        span {
+            font-weight: v.$semibold;
+            color: v.$Neutral900;
+            flex-grow: 1;
+        }
+
+        img {
+            width: 2rem;
+            margin-left: auto;
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid v.$Blue200;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            display: grid;
+            place-content: center;
+            margin: 0;
+            flex-shrink: 0;
+
+            &:checked {
+                border: 5px solid v.$Blue700;
+                background-color: v.$White;
+            }
+
+            &:focus-visible {
+                outline: 2px solid v.$Blue700;
+                outline-offset: 2px;
+            }
+        }
+    }
+}
+
+.step2{
+    width: 100%;
+    box-sizing: border-box;
+
+    p{
+        font-size: 0.9rem;
+        margin: 0 0 1rem 0;
+        color: v.$Neutral600;
+        font-weight: v.$medium;
+    }
+
+    &__options{
+        display: flex;
+        flex-wrap: wrap; 
+        gap: 0.5rem; 
+        width: 100%;
+    }
+
+    &__option {
+        display: inline-flex;
+    }
+
+    &__label{
+         display: flex;
+         align-items: center;
+         justify-content: flex-start;
+         gap: 0.75rem;
+         width: fit-content;
+
+         background-color: v.$White;
+         border: 2px solid v.$Blue200;
+         padding: 0.75rem 1rem;
+         border-radius: 12px;
+         box-sizing: border-box;
+         cursor: pointer; 
+         transition: border-color 0.2s ease;
+
+        // Borde azul cuando el radio interno está seleccionado
+        &:has(input:checked) {
+            border-color: v.$Blue700;
+        }
+
+        span {
+            font-weight: v.$semibold;
+            color: v.$Neutral900;
+            white-space: nowrap;
+        }
+
+        input[type="checkbox"] {
+            border: 1px solid v.$Blue200;
+            outline: none;
+            cursor: pointer;
+            margin: 0;
+
+            &:checked {
+                border: 5px solid v.$Blue700;
+                background-color: v.$White;
+            }
+
+            &:focus-visible {
+                outline: 2px solid v.$Blue700;
+                outline-offset: 2px;
+            }
+        }
+    }
+
+}
+
+.step3{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+
+   &__textarea-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.35rem; 
+        width: 100%;
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 0.75rem;
+            border: 2px solid v.$Blue200;
+            border-radius: 12px;
+            background-color: v.$White;
+            font-size: 0.95rem;
+            color: v.$Neutral900;
+            box-sizing: border-box;
+            resize: none;
+            outline: none;
+
+            &:focus {
+                border-color: v.$Blue700;
+            }
+
+            &::placeholder {
+                color: v.$Neutral600;
+                font-style: italic;
+            }
+        }
+    }
+
+    &__counter {
+        font-size: 0.8rem;
+        color: v.$Neutral600;
+        transition: color 0.2s ease;
+
+        &--limit {
+            color: #e74c3c;
+            font-weight: v.$bold;
+        }
+    }
+
+}
+
+
 
 //////////FEELING
 

@@ -61,3 +61,16 @@
     }
 
 }
+
+@mixin closeButton{
+    align-self: flex-end;
+    appearance: none;
+    -moz-appearance: none;
+    font-family: v.$fuente_principal;
+    background-color: transparent;
+    border: none;
+    font-weight: v.$bold;
+    color: v.$Neutral300;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
